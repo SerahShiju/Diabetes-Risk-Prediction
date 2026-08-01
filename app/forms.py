@@ -11,7 +11,7 @@ def patient_form():
         (submitted, patient_data)
     """
 
-    st.subheader("📝 Patient Information")
+    st.subheader(" Patient Information")
 
     with st.form("patient_form"):
 
@@ -146,7 +146,7 @@ def patient_form():
         # Vital Signs
         # =====================================================
 
-        st.markdown("### ❤️ Vital Signs")
+        st.markdown("### Vital Signs")
 
         col1, col2 = st.columns(2)
 
@@ -197,7 +197,7 @@ def patient_form():
         # Laboratory Tests
         # =====================================================
 
-        st.markdown("### 🧪 Laboratory Measurements")
+        st.markdown("###  Laboratory Measurements")
 
         col1, col2 = st.columns(2)
 
@@ -239,7 +239,7 @@ def patient_form():
         # Medical History
         # =====================================================
 
-        st.markdown("### 📋 Medical History")
+        st.markdown("###  Medical History")
 
         col1, col2, col3 = st.columns(3)
 

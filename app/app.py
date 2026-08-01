@@ -57,7 +57,7 @@ pipeline = load_pipeline()
 st.markdown("""
 <div class="hero">
 
-<h1>🩺 Diabetes Risk Prediction System</h1>
+<h1> Diabetes Risk Prediction System</h1>
 
 <p>
 AI-powered clinical decision support system for

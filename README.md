@@ -1,97 +1,210 @@
-# Diabetes Risk Prediction with a Calibrated Stacking Ensemble
+# Diabetes Risk Prediction
 
-A production-ready machine learning project for predicting diabetes risk using a calibrated stacking ensemble. This project combines multiple machine learning models with probability calibration to improve predictive performance and reliability.
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+A machine learning web application that estimates diabetes risk from patient health data using a **calibrated stacking ensemble** of **XGBoost**, **LightGBM**, and a **Multi-Layer Perceptron (MLP)**.
+
+Unlike many diabetes prediction demos that focus only on classification accuracy, this project emphasizes **probability calibration** and **model explainability**, producing predictions that are both reliable and interpretable through an interactive Streamlit interface.
 
 ---
 
-## Project Overview
+## Live Demo
 
-This project implements a complete end-to-end machine learning pipeline for diabetes risk prediction, including:
+ Coming Soon (Streamlit Community Cloud)
 
-- Data preprocessing
-- Feature engineering
-- Hyperparameter optimization using Optuna
-- Stacking ensemble learning
-- Probability calibration
-- Explainability using SHAP
-- Model serialization for deployment
+---
 
-The project is organized for reproducibility and future deployment using Streamlit or FastAPI.
+## Screenshots
+
+> Add your screenshots after deployment.
+
+### Home Page
+
+![Home](images/home.png)
+
+### Patient Form
+
+![Patient Form](images/form.png)
+
+### Prediction Result
+
+![Prediction](images/result.png)
+
+### Patient Summary
+
+![Patient Summary](images/summary.png)
 
 ---
 
 ## Features
 
-- XGBoost
-- LightGBM
-- Multi-layer Perceptron (MLP)
-- Logistic Regression Meta Learner
-- Stacking Ensemble
-- Isotonic Probability Calibration
-- SHAP Explainability
-- Production-ready preprocessing pipeline
-- Saved deployment artifacts
+- Interactive Streamlit interface
+- Diabetes risk prediction from patient health information
+- Calibrated probability estimation using Isotonic Regression
+- Personalized health recommendations
+- Patient summary dashboard
+- Explainable AI using SHAP
+- Modular preprocessing and inference pipeline
+- Production-ready deployment structure
 
 ---
 
 ## Project Structure
 
-```
+```text
 Diabetes-Risk-Prediction/
-│
-├── data/
-├── explainability/
+├── app/
+│   ├── app.py
+│   └── styles.css
 ├── models/
-├── notebooks/
+│   ├── preprocessor.pkl
+│   ├── stacking_model.pkl
+│   ├── calibrated_model.pkl
+│   ├── threshold.pkl
+│   └── metadata.json
 ├── samples/
+│   ├── sample_input.csv
+│   └── sample_output.csv
+├── forms.py
+├── predict.py
 ├── requirements.txt
 ├── README.md
-└── .gitignore
+└── DEPLOYMENT.md
 ```
 
 ---
 
-## Models Used
+## Dataset
+
+The model is trained on the **Behavioral Risk Factor Surveillance System (BRFSS) Diabetes Health Indicators Dataset**, a large public health survey containing demographic, lifestyle, and health-related information associated with diabetes risk.
+
+The application uses features including:
+
+- Age
+- Sex
+- Body Mass Index (BMI)
+- High Blood Pressure
+- High Cholesterol
+- Cholesterol Check History
+- Smoking Status
+- Stroke History
+- Heart Disease
+- Physical Activity
+- Fruit Consumption
+- Vegetable Consumption
+- Heavy Alcohol Consumption
+- Healthcare Access
+- Difficulty Walking
+- General Health
+- Mental Health
+- Physical Health
+- Education
+- Income
+
+---
+
+##  Model Architecture
+
+The prediction pipeline follows a stacked ensemble approach.
+
+```text
+Patient Information
+        │
+        ▼
+Data Preprocessing
+        │
+        ▼
+Stacking Ensemble
+ ├── XGBoost
+ ├── LightGBM
+ └── Multi-Layer Perceptron
+        │
+        ▼
+Logistic Regression Meta-Learner
+        │
+        ▼
+Probability Calibration
+        │
+        ▼
+Diabetes Risk Prediction
+```
+
+### Base Models
 
 - XGBoost
 - LightGBM
-- Multi-layer Perceptron
-- Logistic Regression (Meta Learner)
+- Multi-Layer Perceptron (MLP)
 
-Final prediction is produced using a calibrated stacking ensemble.
+### Meta-Learner
 
----
+- Logistic Regression
 
-## Explainability
+### Probability Calibration
 
-Model explanations are generated using SHAP.
+- Isotonic Regression (`CalibratedClassifierCV`)
 
-Generated artifacts include:
+### Explainability
 
-- SHAP Summary Plot
-- SHAP Feature Importance Plot
-- Feature Importance CSV
-- SHAP Values
-- SHAP Explainer
-- Feature Dependence Plots
+- SHAP (SHapley Additive exPlanations)
 
 ---
 
-## Installation
+##  Performance Highlights
 
-Clone the repository
+The project goes beyond standard classification by combining multiple complementary machine learning models with probability calibration.
+
+Key highlights include:
+
+- Stacking ensemble combining XGBoost, LightGBM, and MLP
+- Calibrated probability estimates using Isotonic Regression
+- Improved probability reliability for risk assessment
+- Explainable predictions using SHAP
+- Modular inference pipeline suitable for deployment
+
+---
+
+##  Technology Stack
+
+### Machine Learning
+
+- Scikit-learn
+- XGBoost
+- LightGBM
+- TensorFlow / Keras
+- SHAP
+
+### Web Application
+
+- Streamlit
+- HTML/CSS
+
+### Python Libraries
+
+- NumPy
+- Pandas
+- Joblib
+- Matplotlib
+
+---
+
+##  Installation
+
+Clone the repository.
 
 ```bash
 git clone https://github.com/SerahShiju/Diabetes-Risk-Prediction.git
+
+cd Diabetes-Risk-Prediction
 ```
 
-Create a virtual environment
+Create a virtual environment.
 
 ```bash
 python -m venv venv
 ```
-
-Activate the environment
 
 ### Windows
 
@@ -99,116 +212,94 @@ Activate the environment
 venv\Scripts\activate
 ```
 
-Install dependencies
+### macOS / Linux
+
+```bash
+source venv/bin/activate
+```
+
+Install the required dependencies.
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+Run the Streamlit application.
 
-## Running the Project
-
-Open the notebooks inside the `notebooks` folder.
-
-Production models are available inside the `models` directory.
+```bash
+streamlit run app/app.py
+```
 
 ---
 
-## Technologies
+##  Usage
 
-- Python
+1. Launch the Streamlit application.
+2. Enter the patient's health information.
+3. Click **Predict Risk**.
+4. View:
+   - Predicted diabetes risk
+   - Calibrated probability
+   - Personalized recommendation
+   - Patient summary
+
+Sample input and output files are available inside the `samples/` directory.
+
+---
+
+##  Why Probability Calibration?
+
+Many machine learning classifiers output confidence scores that are not true probabilities.
+
+This project applies **Isotonic Regression** using **CalibratedClassifierCV** so that predicted probabilities better reflect real-world outcomes. For example, when the model predicts a 70% risk, that estimate is intended to correspond more closely to the observed frequency of diabetes among similar patients.
+
+This makes the predictions more reliable for interpretation and demonstrates an important aspect of deploying machine learning models in healthcare applications.
+
+---
+
+##  Future Improvements
+
+- Deploy on Streamlit Community Cloud
+- PDF prediction reports
+- Batch prediction from CSV uploads
+- REST API support
+- Docker containerization
+- User authentication
+- Electronic Health Record (EHR) integration
+- CI/CD using GitHub Actions
+
+---
+
+##  License
+
+This project is licensed under the MIT License.
+
+---
+
+##  Author
+
+**Serah Ann Shiju**
+
+Master of Computer Applications (MCA)
+
+Artificial Intelligence & Machine Learning Enthusiast
+
+GitHub: https://github.com/SerahShiju
+
+---
+
+##  Acknowledgements
+
+This project was built using:
+
+- Behavioral Risk Factor Surveillance System (BRFSS)
 - Scikit-learn
+- Streamlit
 - XGBoost
 - LightGBM
-- Optuna
+- TensorFlow / Keras
 - SHAP
-- NumPy
-- Pandas
-- Matplotlib
-- Joblib
 
 ---
 
-## Future Improvements
-
-- Streamlit Web Application
-- FastAPI REST API
-- Docker Support
-- Cloud Deployment
-- Model Monitoring
-
----
-
-## License
-MIT License
-
-Copyright (c) 2026 Serah Shiju
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
-# Inference
-
-Run predictions using the command line.
-
-```bash
-python predict.py --input samples/sample_input.csv
-```
-
-Save predictions
-
-```bash
-python predict.py --input samples/sample_input.csv --output samples/sample_output.csv
-```
-
----
-
-## Prediction Pipeline
-
-```
-Raw Input
-     ↓
-Preprocessor
-     ↓
-XGBoost
-LightGBM
-MLP
-     ↓
-Meta Logistic Regression
-     ↓
-Calibration
-     ↓
-Threshold
-     ↓
-Prediction
-```
-
----
-
-## Example Output
-
-```
-Patient #1
-
-Probability : 33.95%
-
-Prediction : Non-Diabetic
-```
+⭐ If you found this project interesting or useful, consider giving it a star!
