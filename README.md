@@ -162,3 +162,53 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+# Inference
+
+Run predictions using the command line.
+
+```bash
+python predict.py --input samples/sample_input.csv
+```
+
+Save predictions
+
+```bash
+python predict.py --input samples/sample_input.csv --output samples/sample_output.csv
+```
+
+---
+
+## Prediction Pipeline
+
+```
+Raw Input
+     ↓
+Preprocessor
+     ↓
+XGBoost
+LightGBM
+MLP
+     ↓
+Meta Logistic Regression
+     ↓
+Calibration
+     ↓
+Threshold
+     ↓
+Prediction
+```
+
+---
+
+## Example Output
+
+```
+Patient #1
+
+Probability : 33.95%
+
+Prediction : Non-Diabetic
+```

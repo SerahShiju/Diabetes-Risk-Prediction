@@ -14,6 +14,7 @@ Project: Diabetes Risk Prediction with a Calibrated
 
 import os
 import json
+from unittest import result
 import joblib
 import argparse
 import pandas as pd
@@ -254,6 +255,37 @@ class InferencePipeline:
         results = self.predict(input_data)
 
         return results
+    
+    # =========================================================
+    # Single Patient Prediction
+    # =========================================================
+
+    def predict_single(self, patient_data):
+        """
+        Predict diabetes risk for a single patient.
+
+        Parameters
+        ----------
+        patient_data : dict
+        Dictionary containing patient information.
+
+        Returns
+        -------
+        dict
+        Prediction results.
+        """
+
+        input_df = pd.DataFrame([patient_data])
+
+        result = self.predict(input_df).iloc[0]
+
+        return {
+            "probability": float(result["Probability"]),
+            "prediction": int(result["Prediction"]),
+            "risk_label": result["Risk_Label"],
+            "threshold": float(result["Threshold"])
+        }
+    
 # =========================================================
 # Command Line Interface
 # =========================================================
