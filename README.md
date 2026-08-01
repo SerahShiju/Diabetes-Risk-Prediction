@@ -23,19 +23,19 @@ Unlike many diabetes prediction demos that focus only on classification accuracy
 
 ### Home Page
 
-![Home](images/home.png)
+![Home](screenshots/home.png)
 
 ### Patient Form
 
-![Patient Form](images/form.png)
+![Patient Form](screenshots/form.png)
 
 ### Prediction Result
 
-![Prediction](images/result.png)
+![Prediction](screenshots/result.png)
 
 ### Patient Summary
 
-![Patient Summary](images/summary.png)
+![Patient Summary](screenshots/summary.png)
 
 ---
 
