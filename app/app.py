@@ -1,7 +1,6 @@
 import streamlit as st
 import sys
 from pathlib import Path
-import plotly.graph_objects as go
 
 # --------------------------------------------------
 # Add project root to Python path
@@ -284,62 +283,7 @@ if submitted:
     # Probability Gauge
     # --------------------------------------------------
 
-    st.markdown("### 📊 Risk Probability Gauge")
-
-    gauge = go.Figure(
-        go.Indicator(
-            mode="gauge+number",
-            value=probability,
-            number={
-                "suffix": "%",
-                "font": {"size": 36}
-            },
-            title={
-                "text": "Predicted Diabetes Risk",
-                "font": {"size": 22}
-            },
-            gauge={
-                "axis": {
-                    "range": [0, 100]
-                },
-                "bar": {
-                    "color": "#1565C0"
-                },
-                "steps": [
-                    {
-                        "range": [0, 30],
-                        "color": "#C8E6C9"
-                    },
-                    {
-                        "range": [30, 60],
-                        "color": "#FFF9C4"
-                    },
-                    {
-                        "range": [60, 100],
-                        "color": "#FFCDD2"
-                    }
-                ],
-                "threshold": {
-                    "line": {
-                        "color": "red",
-                        "width": 4
-                    },
-                    "value": threshold
-                }
-            }
-        )
-    )
-
-    gauge.update_layout(
-        height=350,
-        margin=dict(l=30, r=30, t=50, b=20)
-    )
-
-    st.plotly_chart(
-        gauge,
-        use_container_width=True
-    )
-
+   
     # --------------------------------------------------
     # Recommendation
     # --------------------------------------------------
