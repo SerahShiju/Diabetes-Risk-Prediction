@@ -1,6 +1,6 @@
-# Diabetes Risk Prediction
+# DailyRise — Diabetes Risk Prediction
 
-![Python](https://img.shields.io/badge/Python-3.13-blue)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -13,7 +13,7 @@ Unlike many diabetes prediction demos that focus only on classification accuracy
 
 ## Live Demo
 
- Coming Soon (Streamlit Community Cloud)
+**[Try DailyRise on Streamlit Community Cloud →](https://diabetes-risk-prediction-wmxr7mqyazxysqbqhfdwkl.streamlit.app/)**
 
 ---
 
@@ -41,7 +41,7 @@ Unlike many diabetes prediction demos that focus only on classification accuracy
 
 ## Features
 
-- Interactive Streamlit interface
+- Interactive Streamlit interface with a custom light/dark-adaptive theme
 - Diabetes risk prediction from patient health information
 - Calibrated probability estimation using Isotonic Regression
 - Personalized health recommendations
@@ -58,19 +58,25 @@ Unlike many diabetes prediction demos that focus only on classification accuracy
 Diabetes-Risk-Prediction/
 ├── app/
 │   ├── app.py
+│   ├── forms.py
 │   └── styles.css
 ├── models/
 │   ├── preprocessor.pkl
-│   ├── stacking_model.pkl
-│   ├── calibrated_model.pkl
+│   ├── xgb.pkl
+│   ├── lightgbm.pkl
+│   ├── mlp.pkl
+│   ├── meta.pkl
+│   ├── calibrated.pkl
 │   ├── threshold.pkl
+│   ├── feature_names.pkl
+│   ├── target_labels.pkl
 │   └── metadata.json
 ├── samples/
 │   ├── sample_input.csv
 │   └── sample_output.csv
-├── forms.py
 ├── predict.py
 ├── requirements.txt
+├── runtime.txt
 ├── README.md
 └── DEPLOYMENT.md
 ```
@@ -106,7 +112,7 @@ The application uses features including:
 
 ---
 
-##  Model Architecture
+## Model Architecture
 
 The prediction pipeline follows a stacked ensemble approach.
 
@@ -152,7 +158,7 @@ Diabetes Risk Prediction
 
 ---
 
-##  Performance Highlights
+## Performance Highlights
 
 The project goes beyond standard classification by combining multiple complementary machine learning models with probability calibration.
 
@@ -166,14 +172,13 @@ Key highlights include:
 
 ---
 
-##  Technology Stack
+## Technology Stack
 
 ### Machine Learning
 
 - Scikit-learn
 - XGBoost
 - LightGBM
-- TensorFlow / Keras
 - SHAP
 
 ### Web Application
@@ -190,7 +195,7 @@ Key highlights include:
 
 ---
 
-##  Installation
+## Installation
 
 Clone the repository.
 
@@ -232,11 +237,11 @@ streamlit run app/app.py
 
 ---
 
-##  Usage
+## Usage
 
-1. Launch the Streamlit application.
+1. Launch the Streamlit application (or open the [live demo](https://diabetes-risk-prediction-wmxr7mqyazxysqbqhfdwkl.streamlit.app/)).
 2. Enter the patient's health information.
-3. Click **Predict Risk**.
+3. Click **Predict Diabetes Risk**.
 4. View:
    - Predicted diabetes risk
    - Calibrated probability
@@ -247,7 +252,7 @@ Sample input and output files are available inside the `samples/` directory.
 
 ---
 
-##  Why Probability Calibration?
+## Why Probability Calibration?
 
 Many machine learning classifiers output confidence scores that are not true probabilities.
 
@@ -257,9 +262,8 @@ This makes the predictions more reliable for interpretation and demonstrates an 
 
 ---
 
-##  Future Improvements
+## Future Improvements
 
-- Deploy on Streamlit Community Cloud
 - PDF prediction reports
 - Batch prediction from CSV uploads
 - REST API support
@@ -270,13 +274,13 @@ This makes the predictions more reliable for interpretation and demonstrates an 
 
 ---
 
-##  License
+## License
 
 This project is licensed under the MIT License.
 
 ---
 
-##  Author
+## Author
 
 **Serah Ann Shiju**
 
@@ -288,7 +292,7 @@ GitHub: https://github.com/SerahShiju
 
 ---
 
-##  Acknowledgements
+## Acknowledgements
 
 This project was built using:
 
@@ -297,7 +301,6 @@ This project was built using:
 - Streamlit
 - XGBoost
 - LightGBM
-- TensorFlow / Keras
 - SHAP
 
 ---
