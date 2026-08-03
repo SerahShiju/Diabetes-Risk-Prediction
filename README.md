@@ -85,6 +85,54 @@ Diabetes-Risk-Prediction/
 
 ## Dataset
 
+This project uses two complementary datasets to develop and evaluate the proposed diabetes risk prediction model.
+
+### 1. Synthetic Diabetes Dataset (Training Dataset)
+
+The primary model was trained using the **Synthetic Diabetes Dataset** from the **Kaggle Tabular Playground Series – Season 5, Episode 12**. This large-scale synthetic dataset contains demographic, lifestyle, clinical, and medical history features associated with diabetes risk. It was used for data preprocessing, feature engineering, model training, hyperparameter optimization, probability calibration, and construction of the stacking ensemble.
+
+### 2. BRFSS Dataset (External Validation)
+
+To evaluate the generalization capability of the proposed model, external validation was performed using the **Behavioral Risk Factor Surveillance System (BRFSS)** dataset published by the **U.S. Centers for Disease Control and Prevention (CDC)**. The BRFSS dataset represents real-world health survey data and was used to assess the robustness and reliability of the trained model on an independent population.
+
+### Model Features
+
+The deployed model uses the following **24 input features**:
+
+#### Demographic Information
+- Age
+- Gender
+- Ethnicity
+- Education Level
+- Income Level
+- Employment Status
+
+#### Lifestyle Factors
+- Alcohol Consumption (per week)
+- Physical Activity (minutes per week)
+- Diet Score
+- Sleep Hours (per day)
+- Screen Time (hours per day)
+- Smoking Status
+
+#### Clinical Measurements
+- Body Mass Index (BMI)
+- Waist-to-Hip Ratio
+- Systolic Blood Pressure
+- Diastolic Blood Pressure
+- Heart Rate
+- Total Cholesterol
+- HDL Cholesterol
+- LDL Cholesterol
+- Triglycerides
+
+#### Medical History
+- Family History of Diabetes
+- Hypertension History
+- Cardiovascular Disease History
+
+> **Note:** The deployed prediction model is trained using the Synthetic Diabetes Dataset, while the BRFSS dataset is used exclusively for external validation to demonstrate the model's ability to generalize across different data distributions.
+
 The model is trained on patient-level health data covering demographic, lifestyle, clinical, and laboratory measurements associated with diabetes risk.
 
 The application uses the following features:
