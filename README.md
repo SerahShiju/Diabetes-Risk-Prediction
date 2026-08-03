@@ -85,6 +85,44 @@ Diabetes-Risk-Prediction/
 
 ## Dataset
 
+The model is trained on patient-level health data covering demographic, lifestyle, clinical, and laboratory measurements associated with diabetes risk.
+
+The application uses the following features:
+
+**Demographics**
+- Age
+- Gender
+- Ethnicity
+- Education Level
+- Income Level
+- Employment Status
+
+**Lifestyle**
+- Alcohol Consumption (per week)
+- Physical Activity (minutes per week)
+- Diet Score
+- Sleep Hours (per day)
+- Screen Time (hours per day)
+- Smoking Status
+
+**Vital Signs**
+- BMI
+- Waist-to-Hip Ratio
+- Systolic Blood Pressure
+- Diastolic Blood Pressure
+- Heart Rate
+
+**Laboratory Measurements**
+- Total Cholesterol
+- HDL Cholesterol
+- LDL Cholesterol
+- Triglycerides
+
+**Medical History**
+- Family History of Diabetes
+- Hypertension History
+- Cardiovascular Disease History
+
 The model is trained on the **Behavioral Risk Factor Surveillance System (BRFSS) Diabetes Health Indicators Dataset**, a large public health survey containing demographic, lifestyle, and health-related information associated with diabetes risk.
 
 The application uses features including:
