@@ -1,79 +1,134 @@
 /* =========================================================
-   General Layout
+   Fonts & Base
 ========================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
 .main {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     padding-bottom: 2rem;
 }
 
 /* =========================================================
-   Main Title
+   Palette (CSS variables) — tuned for dark theme
 ========================================================= */
 
-.main-title {
+:root {
+    --teal: #1EA896;
+    --teal-bright: #3DDC97;
+    --sea-green: #2E9E6F;
+    --sky-blue: #4C9BD6;
+    --text-light: #E8EDEC;
+    --text-muted: #9FB0AC;
+    --card-bg: rgba(255,255,255,0.045);
+    --card-border: rgba(30,168,150,0.28);
+}
 
-    font-size: 42px;
+/* =========================================================
+   Hero Banner
+========================================================= */
 
+.hero {
+    background: linear-gradient(120deg, #0F4C4A 0%, #1E6E8C 100%);
+    padding: 32px 34px;
+    border-radius: 14px;
+    text-align: left;
+    color: white;
+    margin-bottom: 22px;
+}
+
+.hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 11.5px;
+    font-weight: 600;
+    opacity: 0.75;
+    margin-bottom: 6px;
+}
+
+.hero h1 {
+    font-size: 30px;
     font-weight: 800;
+    margin: 0 0 8px 0;
+    color: white;
+}
 
-    text-align: center;
-
-    color: #1565C0;
-
-    margin-bottom: 0.2rem;
+.hero p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.82);
+    max-width: 640px;
+    margin: 0;
 }
 
 /* =========================================================
-   Subtitle
-========================================================= */
-
-.subtitle {
-
-    text-align: center;
-
-    color: #607D8B;
-
-    font-size: 18px;
-
-    margin-bottom: 2rem;
-}
-
-/* =========================================================
-   Section Headers
+   Section Headers — tighter, aligned accent bar
 ========================================================= */
 
 h2, h3 {
-
-    color: #1565C0;
-
+    color: var(--text-light);
     font-weight: 700;
 }
 
-/* =========================================================
-   Metric Cards
-========================================================= */
-
-div[data-testid="metric-container"] {
-
-    background: white;
-
-    border-radius: 14px;
-
-    padding: 18px;
-
-    border: 1px solid #E3F2FD;
-
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
-
-    transition: 0.3s;
+div[data-testid="stMarkdownContainer"] h3 {
+    font-size: 16px !important;
+    font-weight: 700;
+    line-height: 1.3;
+    padding-left: 12px;
+    margin-top: 1.2rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    display: inline-block;
+    color: var(--text-light);
 }
 
-div[data-testid="metric-container"]:hover {
+div[data-testid="stMarkdownContainer"] h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+}
 
-    transform: translateY(-3px);
+/* =========================================================
+   Alert Boxes (info / success / warning)
+========================================================= */
 
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.12);
+div[data-testid="stAlert"] {
+    border-radius: 10px;
+    padding: 4px 2px;
+    margin-bottom: 16px;
+}
+
+/* =========================================================
+   Metric Cards — dark, subtle, blended
+========================================================= */
+
+div[data-testid="stMetric"] {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--card-border);
+    margin-bottom: 4px;
+}
+
+div[data-testid="stMetricLabel"] p {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--teal-bright) !important;
+    font-weight: 700;
 }
 
 /* =========================================================
@@ -81,27 +136,20 @@ div[data-testid="metric-container"]:hover {
 ========================================================= */
 
 div.stButton > button {
-
-    background-color: #1565C0;
-
-    color: white;
-
-    border-radius: 10px;
-
+    background-color: var(--teal);
+    color: #05201C;
+    border-radius: 8px;
     border: none;
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-    padding: 12px;
-
-    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 11px;
+    letter-spacing: 0.2px;
+    transition: background-color 0.15s ease;
 }
 
 div.stButton > button:hover {
-
-    background-color: #0D47A1;
+    background-color: var(--teal-bright);
+    color: #05201C;
 }
 
 /* =========================================================
@@ -109,62 +157,77 @@ div.stButton > button:hover {
 ========================================================= */
 
 section[data-testid="stSidebar"] {
-
-    border-right: 1px solid #ECECEC;
-}
-
-/* =========================================================
-   Success / Warning / Error Boxes
-========================================================= */
-
-div[data-testid="stAlert"] {
-
-    border-radius: 12px;
+    border-right: 1px solid rgba(30,168,150,0.15);
 }
 
 /* =========================================================
    Progress Bar
 ========================================================= */
 
-div[data-testid="stProgressBar"] {
-
-    height: 12px;
+div[data-testid="stProgress"] > div > div > div {
+    background-color: var(--teal-bright) !important;
 }
+
+div[data-testid="stProgress"] {
+    margin-top: 4px;
+    margin-bottom: 22px;
+}
+
 /* =========================================================
-   Hero Banner
+   Result Cards — tinted transparent, not solid white
 ========================================================= */
 
-.hero {
+.risk-high {
+    background: rgba(224, 90, 70, 0.12);
+    border: 1px solid rgba(224, 90, 70, 0.35);
+    border-left: 4px solid #E05A46;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+}
 
-    background: linear-gradient(135deg,#1565C0,#42A5F5);
+.risk-low {
+    background: rgba(46, 158, 111, 0.12);
+    border: 1px solid rgba(46, 158, 111, 0.35);
+    border-left: 4px solid var(--sea-green);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+}
 
-    padding: 35px;
+.risk-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
 
-    border-radius: 18px;
+.risk-text {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.6;
+}
 
+/* =========================================================
+   Column spacing
+========================================================= */
+
+div[data-testid="stHorizontalBlock"] {
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+/* =========================================================
+   Footer
+========================================================= */
+
+.app-footer {
     text-align: center;
-
-    color: white;
-
-    margin-bottom: 30px;
-
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+    padding: 20px 0 6px 0;
+    color: var(--text-muted);
+    font-size: 12.5px;
 }
 
-.hero h1{
-
-    font-size:42px;
-
-    margin-bottom:10px;
-
-    color:white;
-}
-
-.hero p{
-
-    font-size:18px;
-
-    line-height:1.6;
-
-    color:white;
+.app-footer strong {
+    color: var(--text-light);
 }

@@ -11,7 +11,7 @@ def patient_form():
         (submitted, patient_data)
     """
 
-    st.subheader(" Patient Information")
+    st.subheader("Patient Information")
 
     with st.form("patient_form"):
 
@@ -19,7 +19,7 @@ def patient_form():
         # Demographics
         # =====================================================
 
-        st.markdown("### 👤 Demographics")
+        st.markdown("### Demographics")
 
         col1, col2 = st.columns(2)
 
@@ -85,7 +85,7 @@ def patient_form():
         # Lifestyle
         # =====================================================
 
-        st.markdown("### 🏃 Lifestyle")
+        st.markdown("### Lifestyle")
 
         col1, col2 = st.columns(2)
 
@@ -197,7 +197,7 @@ def patient_form():
         # Laboratory Tests
         # =====================================================
 
-        st.markdown("###  Laboratory Measurements")
+        st.markdown("### Laboratory Measurements")
 
         col1, col2 = st.columns(2)
 
@@ -239,7 +239,7 @@ def patient_form():
         # Medical History
         # =====================================================
 
-        st.markdown("###  Medical History")
+        st.markdown("### Medical History")
 
         col1, col2, col3 = st.columns(3)
 
@@ -268,7 +268,7 @@ def patient_form():
             )
 
         submitted = st.form_submit_button(
-            "🔍 Predict Diabetes Risk",
+            "Predict Diabetes Risk",
             use_container_width=True
         )
 
@@ -299,4 +299,4 @@ def patient_form():
         "cardiovascular_history": cardiovascular,
     }
 
-    return submitted, patient_data 
+    return submitted, patient_data

@@ -17,8 +17,8 @@ from predict import InferencePipeline
 # --------------------------------------------------
 
 st.set_page_config(
-    page_title="Diabetes Risk Prediction",
-    page_icon="🩺",
+    page_title="Diabetes Risk Prediction System",
+    page_icon="🌤️",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -55,60 +55,34 @@ pipeline = load_pipeline()
 
 st.markdown("""
 <div class="hero">
-
-<h1> Diabetes Risk Prediction System</h1>
-
-<p>
-AI-powered clinical decision support system for
-early diabetes risk assessment using a
-<strong>Calibrated Stacking Ensemble</strong>.
-</p>
-
+    <div class="eyebrow">Health Screening Tool</div>
+    <h1>Diabetes Risk Prediction System</h1>
+    <p>
+        A clinical decision-support tool that estimates diabetes risk
+        from everyday health, lifestyle, and clinical measurements
+        using a calibrated stacking ensemble model.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-
     st.info(
-        """
-### 🎯 Purpose
-
-Estimate diabetes risk from
-clinical, lifestyle, and
-demographic information.
-"""
+        "**Purpose**\n\nEstimate diabetes risk from clinical, "
+        "lifestyle, and demographic information."
     )
 
 with col2:
-
-    st.success(
-        """
-### 🤖 AI Technology
-
-Calibrated Stacking Ensemble
-
-• XGBoost
-
-• LightGBM
-
-• TensorFlow MLP
-"""
+    st.info(
+        "**Model**\n\nCalibrated stacking ensemble combining "
+        "XGBoost, LightGBM, and a neural network learner."
     )
 
 with col3:
-
     st.warning(
-        """
-### ⚠️ Clinical Notice
-
-This application supports
-screening only.
-
-It does not replace
-professional medical advice.
-"""
+        "**Clinical Notice**\n\nThis tool supports screening only "
+        "and does not replace professional medical advice."
     )
 
 st.markdown("<br>", unsafe_allow_html=True)
@@ -120,16 +94,16 @@ st.markdown("<br>", unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric("🎯 Accuracy", "82.8%")
+    st.metric("Recall", "94.3%")
 
 with col2:
-    st.metric("⚡ Prediction", "<1 sec")
+    st.metric("Response Time", "< 1 sec")
 
 with col3:
-    st.metric("🧠 AI Model", "Stacking Ensemble")
+    st.metric("Model Type", "Stacking Ensemble")
 
 with col4:
-    st.metric("🔍 Explainability", "SHAP")
+    st.metric("Explainability", "SHAP")
 
 st.divider()
 
@@ -139,35 +113,31 @@ st.divider()
 
 with st.sidebar:
 
-    st.title("🩺 About")
+    st.markdown("### About Diabetes Risk Prediction System")
 
     st.markdown("---")
 
-    st.markdown("### 🤖 Model")
-    st.write("Calibrated Stacking Ensemble")
+    st.markdown("**Model**")
+    st.write("Calibrated stacking ensemble")
 
-    st.markdown("### 📚 Base Models")
-    st.write("""
-- XGBoost
-- LightGBM
-- TensorFlow MLP
-""")
+    st.markdown("**Base Models**")
+    st.write("XGBoost, LightGBM, Neural Network")
 
-    st.markdown("### 📈 Calibration")
-    st.write("Isotonic Regression")
+    st.markdown("**Calibration**")
+    st.write("Isotonic regression")
 
-    st.markdown("### 🔍 Explainability")
+    st.markdown("**Explainability**")
     st.write("SHAP")
 
     st.markdown("---")
 
     st.info(
-        "This application is intended for educational and screening purposes only."
+        "Intended for educational and screening purposes only."
     )
 
     st.markdown("---")
 
-    st.markdown("### 👩‍💻 Developer")
+    st.markdown("**Developer**")
     st.write("Serah Ann Shiju")
 
     st.caption("Version 1.0")
@@ -186,7 +156,7 @@ if submitted:
 
     try:
 
-        with st.spinner("Running AI prediction..."):
+        with st.spinner("Running prediction..."):
 
             result = pipeline.predict_single(patient_data)
 
@@ -201,7 +171,7 @@ if submitted:
 
     st.markdown("---")
 
-    st.subheader("🩺 Prediction Result")
+    st.subheader("Prediction Result")
 
     # --------------------------------------------------
     # Risk Status
@@ -211,21 +181,12 @@ if submitted:
 
         st.markdown(f"""
     <div class="risk-high">
-
-    <div class="risk-title">
-    🔴 HIGH RISK
-    </div>
-
-    <div class="risk-text">
-
-    <b>Prediction:</b> {label}<br><br>
-
-    <b>Estimated Probability:</b> {probability:.2f}%<br>
-
-    <b>Decision Threshold:</b> {threshold:.2f}%
-
-    </div>
-
+        <div class="risk-title">Elevated Risk</div>
+        <div class="risk-text">
+            <b>Prediction:</b> {label}<br><br>
+            <b>Estimated Probability:</b> {probability:.2f}%<br>
+            <b>Decision Threshold:</b> {threshold:.2f}%
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -233,21 +194,12 @@ if submitted:
 
         st.markdown(f"""
     <div class="risk-low">
-
-    <div class="risk-title">
-    🟢 LOW RISK
-    </div>
-
-    <div class="risk-text">
-
-    <b>Prediction:</b> {label}<br><br>
-
-    <b>Estimated Probability:</b> {probability:.2f}%<br>
-
-    <b>Decision Threshold:</b> {threshold:.2f}%
-
-    </div>
-
+        <div class="risk-title">Low Risk</div>
+        <div class="risk-text">
+            <b>Prediction:</b> {label}<br><br>
+            <b>Estimated Probability:</b> {probability:.2f}%<br>
+            <b>Decision Threshold:</b> {threshold:.2f}%
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -258,32 +210,16 @@ if submitted:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-
-        st.metric(
-            "Risk Probability",
-            f"{probability:.2f}%"
-        )
+        st.metric("Risk Probability", f"{probability:.2f}%")
 
     with col2:
-
-        st.metric(
-            "Decision Threshold",
-            f"{threshold:.2f}%"
-        )
+        st.metric("Decision Threshold", f"{threshold:.2f}%")
 
     with col3:
-
-        st.metric(
-            "Prediction",
-            label
-        )
+        st.metric("Prediction", label)
 
     st.progress(probability / 100)
-    # --------------------------------------------------
-    # Probability Gauge
-    # --------------------------------------------------
 
-   
     # --------------------------------------------------
     # Recommendation
     # --------------------------------------------------
@@ -291,40 +227,30 @@ if submitted:
     if result["prediction"] == 1:
 
         st.warning(
-            """
-### Recommendation
-
-The patient is predicted to be at **high risk of diabetes**.
-
-It is recommended to consult a healthcare professional for
-further clinical evaluation and diagnostic testing.
-
-This application is intended to support screening and should
-not replace professional medical advice.
-"""
+            "**Recommendation**\n\n"
+            "The patient is predicted to be at elevated risk of diabetes. "
+            "Consulting a healthcare professional for further clinical "
+            "evaluation and diagnostic testing is recommended.\n\n"
+            "This tool is intended to support screening and should "
+            "not replace professional medical advice."
         )
 
     else:
 
         st.info(
-            """
-### Recommendation
-
-The patient is predicted to be at **low risk of diabetes**.
-
-Continue maintaining a healthy lifestyle including regular
-exercise, balanced nutrition, and periodic health check-ups.
-
-This application is intended to support screening and should
-not replace professional medical advice.
-"""
+            "**Recommendation**\n\n"
+            "The patient is predicted to be at low risk of diabetes. "
+            "Continue maintaining a healthy lifestyle including regular "
+            "exercise, balanced nutrition, and periodic check-ups.\n\n"
+            "This tool is intended to support screening and should "
+            "not replace professional medical advice."
         )
 
     # --------------------------------------------------
     # Patient Summary
     # --------------------------------------------------
 
-    st.markdown("### 📋 Patient Summary")
+    st.markdown("### Patient Summary")
 
     summary_col1, summary_col2 = st.columns(2)
 
@@ -368,7 +294,7 @@ not replace professional medical advice.
     )
 
     st.download_button(
-        label="📥 Download Prediction Report",
+        label="Download Prediction Report",
         data=report.to_csv(index=False),
         file_name="prediction_report.csv",
         mime="text/csv",
@@ -379,60 +305,37 @@ not replace professional medical advice.
     # About the Model
     # --------------------------------------------------
 
-    with st.expander("ℹ️ About this AI Model"):
+    with st.expander("About this model"):
 
         st.markdown(
-            """
-### Model Architecture
-
-This application uses a **Calibrated Stacking Ensemble**.
-
-#### Base Models
-
-- XGBoost
-- LightGBM
-- TensorFlow MLP
-
-#### Meta Learner
-
-- Logistic Regression
-
-#### Calibration
-
-- Isotonic Regression
-
-#### Explainability
-
-- SHAP
-
-The model predicts diabetes risk using demographic,
-lifestyle, and clinical information.
-"""
+            "**Model Architecture**\n\n"
+            "This application uses a calibrated stacking ensemble.\n\n"
+            "**Base Models:** XGBoost, LightGBM, Neural Network\n\n"
+            "**Meta Learner:** Logistic Regression\n\n"
+            "**Calibration:** Isotonic Regression\n\n"
+            "**Explainability:** SHAP\n\n"
+            "The model predicts diabetes risk using demographic, "
+            "lifestyle, and clinical information."
         )
 
     # --------------------------------------------------
     # Confidence Indicator
     # --------------------------------------------------
 
-    st.markdown("### 📈 Prediction Confidence")
+    st.markdown("### Prediction Confidence")
 
     if probability >= 80:
-
-        st.success(
-            "The model is highly confident in this prediction."
-        )
+        st.success("The model is highly confident in this prediction.")
 
     elif probability >= 60:
-
-        st.info(
-            "The model shows moderate confidence in this prediction."
-        )
+        st.info("The model shows moderate confidence in this prediction.")
 
     else:
-
         st.warning(
-            "The prediction is close to the calibrated decision threshold. Interpret the result with clinical judgment."
+            "The prediction is close to the calibrated decision threshold. "
+            "Interpret the result with clinical judgment."
         )
+
 # --------------------------------------------------
 # Footer
 # --------------------------------------------------
@@ -441,20 +344,10 @@ st.markdown("---")
 
 st.markdown(
 """
-<div style="text-align:center; padding:20px 0;">
-
-<h4> Diabetes Risk Prediction System</h4>
-
-<p>
-Developed by <b>Serah Ann Shiju</b> •
-Version 1.0 •
-© 2026
-</p>
-
-<p style="color:gray;">
-Built with Streamlit • Scikit-learn • TensorFlow • XGBoost • LightGBM
-</p>
-
+<div class="app-footer">
+    <strong>Diabetes Prediction System</strong> — Diabetes Risk Prediction<br>
+    Developed by Serah Ann Shiju · Version 1.0 · © 2026<br>
+    Built with Streamlit, Scikit-learn, XGBoost, LightGBM
 </div>
 """,
 unsafe_allow_html=True
